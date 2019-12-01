@@ -23,6 +23,7 @@ p {
     display: inline-block;
     margin: 0 0 32px 0;
     width: 50%;
+    max-width: 384px;
 }
 
 #info {
@@ -120,15 +121,6 @@ p {
     -webkit-transition-delay: 1s;
     transition-property: box-shadow;
     transition-delay: 1s;
-}
-
-.card_front:hover {
-    box-shadow: 0px 2px 10px rgb(0, 0, 0, 15%);
-    cursor: pointer;
-}
-
-.card_front:hover p {
-    opacity: 100%;
 }
 
 #finish {

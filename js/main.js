@@ -72,6 +72,7 @@ function test_two_col() {
                 if (time < 0) {                
                     clearInterval(y)
                     col_pair = []
+                    $('.card_front').attr('disabled', false)
                     // console.log('reset')
                 }
             }, 1800)
@@ -82,6 +83,7 @@ function test_two_col() {
                 if (time_3 < 0) {                
                     clearInterval(z)
                     col_pair = []
+                    $('.card_front').attr('disabled', false)
                     // console.log('reset')
                 }
             }, 1000)
@@ -135,21 +137,72 @@ function test_disable(i) {
 }
 
 $('.card_front').mousedown( function(){    
-    $(this).css('background-color', '#f2f2f2')
+    switch (event.which) {
+        case 1:
+            if (col_pair.length < 2 && !($('#start').attr('disabled'))) {
+                $(this).css('background-color', '#f2f2f2')
+            }    
+            break;
+        case 2:
+            break;
+        case 3:
+            break;
+        default:
+            break;
+    }
 })
 
 $('.card_front').mouseup( function(){
-    $(this).css('background-color', '#fff')
+    switch (event.which) {
+        case 1:
+            if (col_pair.length < 2 && !($('#start').attr('disabled'))) {
+                $(this).css('background-color', '#fff')
+            }        
+            break;
+        case 2:
+            break;
+        case 3:
+            break;
+        default:
+            break;
+    }
 })
 
 $('.card_front').hover( function(){
-    $(this).css({
-        'border': '2px solid #FBD600'
-    })
+    if (col_pair.length < 2 && !($('#start').attr('disabled'))) {
+        $(this).css({
+            'border': '2px solid #FBD600',
+            'box-shadow': '0px 2px 10px rgb(0, 0, 0, 15%)',
+            'cursor': 'pointer'
+        })
+        $(this).find('p').css({
+            'opacity': '100%'
+        })
+    }
 }, function(){
-    $(this).css({
-        'border': '2px solid #e6e6e6'
-    })
+    if (col_pair.length < 2 && !($('#start').attr('disabled'))) {
+        $(this).css({
+            'border': '2px solid #e6e6e6',
+            'box-shadow': '0px 2px 10px rgb(0, 0, 0, 0%)',
+            'cursor': 'default'
+        })
+        $(this).find('p').css({
+            'opacity': '50%'
+        })
+    }
+})
+
+$('.card_front').on('mouseover mousemove', function(){
+    if (col_pair.length < 2 && !($('#start').attr('disabled'))) {
+        $(this).css({
+            'border': '2px solid #FBD600',
+            'box-shadow': '0px 2px 10px rgb(0, 0, 0, 15%)',
+            'cursor': 'pointer'
+        })
+        $(this).find('p').css({
+            'opacity': '100%'
+        })
+    }
 })
 
 $('#start').hover( function(){    
@@ -166,15 +219,47 @@ $('#start').hover( function(){
     })
 })
 
-$('#start').mousedown( function(){    
-    $(this).css({
-        'background-color': '#6C0900',
-    })
+$('#start').mousedown( function(){
+    switch (event.which) {
+        case 1:
+            $(this).css({
+                'background-color': '#875F00',
+            })
+            break;
+        case 2:
+            break;
+        case 3:
+            break;
+        default:
+            break;
+    }
+})
+
+$('#start').mouseup( function(){
+    switch (event.which) {
+        case 1:
+            $(this).css('background-color', '#FBD600')
+            break;
+        case 2:
+            break;
+        case 3:
+            break;
+        default:
+            break;
+    }
 })
 
 
 $('.card_front').click( function(){
     if ((col_pair.length < 2) && !($('#start').attr('disabled'))) {
+        $(this).css({
+            'border': '2px solid #e6e6e6',
+            'box-shadow': '0px 2px 10px rgb(0, 0, 0, 0%)',
+            'cursor': 'default'
+        })
+        $(this).find('p').css({
+            'opacity': '50%'
+        })
         $(this).parent().css('transform', 'rotateY(180deg)')
         let click_back_col = $(this).parent().find('.card_back').css('background-color')
         col_pair.push(click_back_col)
