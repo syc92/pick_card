@@ -177,6 +177,10 @@ p {
     outline: none;
 }
 
+/* .card:hover {
+    cursor: pointer;
+} */
+
 /* #start:focus {
     outline: none;
     background-color: '#D69700';

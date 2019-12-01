@@ -173,7 +173,6 @@ $('.card_front').hover( function(){
         $(this).css({
             'border': '2px solid #FBD600',
             'box-shadow': '0px 2px 10px rgb(0, 0, 0, 15%)',
-            'cursor': 'pointer'
         })
         $(this).find('p').css({
             'opacity': '100%'
@@ -184,7 +183,6 @@ $('.card_front').hover( function(){
         $(this).css({
             'border': '2px solid #e6e6e6',
             'box-shadow': '0px 2px 10px rgb(0, 0, 0, 0%)',
-            'cursor': 'default'
         })
         $(this).find('p').css({
             'opacity': '50%'
@@ -192,17 +190,28 @@ $('.card_front').hover( function(){
     }
 })
 
-$('.card_front').on('mouseover mousemove', function(){
+$('.card_front').on('mousemove', function(){
     if (col_pair.length < 2 && !($('#start').attr('disabled'))) {
         $(this).css({
             'border': '2px solid #FBD600',
             'box-shadow': '0px 2px 10px rgb(0, 0, 0, 15%)',
-            'cursor': 'pointer'
         })
         $(this).find('p').css({
             'opacity': '100%'
         })
     }
+})
+
+$('.card').hover( function(){
+    $(this).css({
+        'cursor': 'pointer'
+    })
+})
+
+$('.card_back').hover( function(){
+    $(this).css({
+        'cursor': 'auto'
+    })
 })
 
 $('#start').hover( function(){    
@@ -255,7 +264,6 @@ $('.card_front').click( function(){
         $(this).css({
             'border': '2px solid #e6e6e6',
             'box-shadow': '0px 2px 10px rgb(0, 0, 0, 0%)',
-            'cursor': 'default'
         })
         $(this).find('p').css({
             'opacity': '50%'
@@ -285,7 +293,7 @@ $('#start').click( function(){
             'text-shadow': 'none',
             'font-size': '24px'
         })
-        $('#description').html('Click the Start button, remember cards position, and pick the cards with same color until you find all the Pikachus.')
+        $('#description').html("Click the Start button, remember cards' position, and pick the cards with same color until you find all the Pikachus.")
         $('#container').css('display', 'block')
         $('.card_inner').find('.card_back').css({
             'box-shadow': '0px 2px 6px rgb(0, 0, 0, 25%)',
