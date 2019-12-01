@@ -10,7 +10,7 @@ var rotated_col_list = []
 $(window).resize( function(){
     current_height = $('.card_back').height()
     $('.card_back, .card_front').css('line-height', current_height + "px")
-    console.log(current_height)
+    // console.log(current_height)
 }) // for line height
 
 function get_child_random_num() {
@@ -40,9 +40,9 @@ function col_to_random_card() {
         let card_child_nth_2 = '.card:nth-child(' + nth_2 + ') .card_inner .card_back'
         $(card_child_nth_1).css('background-color', colors[i])
         $(card_child_nth_2).css('background-color', colors[i])
-        console.log(nth_1, nth_2)
+        // console.log(nth_1, nth_2)
     }
-    console.log('new col')
+    // console.log('new col')
 }
 
 function test_two_col() {
@@ -65,7 +65,6 @@ function test_two_col() {
                     }).css({
                         'transform': 'none',
                     })
-                    // return 2 item in the same time?
                 }
             }, 600)
             let y = setInterval( function() {
@@ -73,7 +72,7 @@ function test_two_col() {
                 if (time < 0) {                
                     clearInterval(y)
                     col_pair = []
-                    console.log('reset')
+                    // console.log('reset')
                 }
             }, 1800)
         } else if ((col_pair[0] == col_pair[1])){
@@ -83,7 +82,7 @@ function test_two_col() {
                 if (time_3 < 0) {                
                     clearInterval(z)
                     col_pair = []
-                    console.log('reset')
+                    // console.log('reset')
                 }
             }, 1000)
             rotated_col_list.push(col_pair[0])
@@ -99,7 +98,7 @@ function test_two_col() {
             }).find('.card_back').css({
                 'box-shadow': '0px 2px 6px rgb(0, 0, 0, 0%)',
             })
-            console.log(rotated_col_list)
+            // console.log(rotated_col_list)
         }
     }
 }
@@ -120,9 +119,10 @@ function test_all_card() {
                 })
             }
         }, 800)
-        console.log('all turned')
+        // console.log('all turned')
     } else {
-        console.log('not yet')
+        // pass
+        // console.log('not yet')
     }
 }
 
@@ -215,13 +215,13 @@ $('#start').click( function(){
             if (time_1 < 0) {                
                 clearInterval(x)
                 col_to_random_card()
-                console.log('new col')
+                // console.log('new col')
             }
         }, 200) // change color after the rotate complete
         let time_2 = 5
         let y = setInterval( function() {
             $('.card_inner').css('transform', 'rotateY(180deg)')
-            console.log('back')
+            // console.log('back')
             $('#countdown').css('opacity', '100')
             $('#sec').html(time_2)
             time_2 -= 1
@@ -239,7 +239,7 @@ $('#start').click( function(){
                 $('.card_inner').css({
                     'transform': 'none'
                 })
-                console.log('front')
+                // console.log('front')
             }
         }, 1000)
         current_height = $('.card_back').height() // for line height
