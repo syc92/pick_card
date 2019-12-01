@@ -1,7 +1,11 @@
-const colors = ['black', 'grey', 'yellow', 'blue', 'green', 'red']
+const colors = ['#FBD600', '#F43807', '#000000', '#875F00', '#1063E6', '#258117']
 var current_height = $('.card_back').height()
 var col_pair = []
 var rotated_col_list = []
+
+// $(document).ready( function(){
+//     $('#start').attr('disabled', false)
+// })
 
 $(window).resize( function(){
     current_height = $('.card_back').height()
@@ -109,7 +113,11 @@ function test_all_card() {
             if (time < 0) {                
                 clearInterval(x)
                 $('#title').html('Pika Pika!')
-                $('#description').html('You found all the Pikachu. Great job!')
+                $('#description').html('You found all the Pikachus. Great job!')
+                $('#title').css({
+                    'text-shadow': '2px 2px 0px #FBD600',
+                    'font-size': '32px'
+                })
             }
         }, 800)
         console.log('all turned')
@@ -117,6 +125,53 @@ function test_all_card() {
         console.log('not yet')
     }
 }
+
+function test_disable(i) {
+    if ($(i).attr('disabled') == 'disabled') {
+        return true
+    } else {
+        return false
+    }
+}
+
+$('.card_front').mousedown( function(){    
+    $(this).css('background-color', '#f2f2f2')
+})
+
+$('.card_front').mouseup( function(){
+    $(this).css('background-color', '#fff')
+})
+
+$('.card_front').hover( function(){
+    $(this).css({
+        'border': '2px solid #FBD600'
+    })
+}, function(){
+    $(this).css({
+        'border': '2px solid #e6e6e6'
+    })
+})
+
+$('#start').hover( function(){    
+    $(this).css({
+        'background-color': '#D69700',
+        'cursor': 'pointer',
+        'box-shadow': '0px 2px 4px rgb(0, 0, 0, 35%)'
+    })
+}, function(){
+    $(this).css({
+        'background-color': '#FBD600',
+        'cursor': 'pointer',
+        'box-shadow': '0px 2px 4px rgb(0, 0, 0, 0%)'
+    })
+})
+
+$('#start').mousedown( function(){    
+    $(this).css({
+        'background-color': '#6C0900',
+    })
+})
+
 
 $('.card_front').click( function(){
     if ((col_pair.length < 2) && !($('#start').attr('disabled'))) {
@@ -128,22 +183,24 @@ $('.card_front').click( function(){
     }
 })
 
-$('.card_front').on('mousedown', function(){    
-    $(this).css('background-color', '#f2f2f2')
-    
-})
-
-$('.card_front').on('mouseup mousemove', function(){
-    $(this).css('background-color', '#fff')
-})
-
 // start a new game start
 $('#start').click( function(){
         col_pair = []
         rotated_col_list = []
         $(this).attr('disabled', true)
+        $(this).css({
+            'background-color': '#FBD600',
+            'box-shadow': '0px 2px 4px rgb(0, 0, 0, 0%)'
+        })
+        if (test_disable('#start')) {
+            $('#start').css('opacity', '40%')
+        }
         $('#title').html('Pick Card Pick Card')
-        $('#description').html('Click the Start button, remember cards position, and pick the card pair with same color until you find all the Pikachu.')
+        $('#title').css({
+            'text-shadow': 'none',
+            'font-size': '24px'
+        })
+        $('#description').html('Click the Start button, remember cards position, and pick the cards with same color until you find all the Pikachus.')
         $('#container').css('display', 'block')
         $('.card_inner').find('.card_back').css({
             'box-shadow': '0px 2px 6px rgb(0, 0, 0, 25%)',
@@ -171,6 +228,9 @@ $('#start').click( function(){
             if (time_2 < 0) {                
                 clearInterval(y)
                 $('#start').attr('disabled', false)
+                if (!(test_disable('#start'))) {
+                    $('#start').css('opacity', '100%')
+                }
                 $('#countdown').css({
                     'opacity': '0',
                     '-webkit-transition-delay': '1s',
