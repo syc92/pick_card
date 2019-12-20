@@ -171,14 +171,20 @@ $('.card_front').on('mouseout', function(){
     }
 })
 
-$('.card_front').hover( function(){
+$('.card_front').on('mousemove', function(){
     if (col_pair.length < 2 && !($('#start').attr('disabled'))) {
         $(this).css({
             'border': '2px solid #FBD600',
             'box-shadow': '0px 2px 10px rgb(0, 0, 0, 15%)',
         })
-        $(this).find('p').css({
-            'opacity': '100%'
+    }
+})
+
+$('.card_front').hover( function(){
+    if (col_pair.length < 2 && !($('#start').attr('disabled'))) {
+        $(this).css({
+            'border': '2px solid #FBD600',
+            'box-shadow': '0px 2px 10px rgb(0, 0, 0, 15%)',
         })
     }
 }, function(){
