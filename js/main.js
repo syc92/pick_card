@@ -3,9 +3,6 @@ var current_height = $('.card_back').height()
 var col_pair = []
 var rotated_col_list = []
 
-// $(document).ready( function(){
-//     $('#start').attr('disabled', false)
-// })
 
 $(window).resize( function(){
     current_height = $('.card_back').height()
@@ -168,6 +165,12 @@ $('.card_front').mouseup( function(){
     }
 })
 
+$('.card_front').on('mouseout', function(){
+    if (col_pair.length < 2 && !($('#start').attr('disabled'))) {
+        $(this).css('background-color', '#fff')
+    }
+})
+
 $('.card_front').hover( function(){
     if (col_pair.length < 2 && !($('#start').attr('disabled'))) {
         $(this).css({
@@ -183,21 +186,6 @@ $('.card_front').hover( function(){
         $(this).css({
             'border': '2px solid #e6e6e6',
             'box-shadow': '0px 2px 10px rgb(0, 0, 0, 0%)',
-        })
-        $(this).find('p').css({
-            'opacity': '50%'
-        })
-    }
-})
-
-$('.card_front').on('mousemove', function(){
-    if (col_pair.length < 2 && !($('#start').attr('disabled'))) {
-        $(this).css({
-            'border': '2px solid #FBD600',
-            'box-shadow': '0px 2px 10px rgb(0, 0, 0, 15%)',
-        })
-        $(this).find('p').css({
-            'opacity': '100%'
         })
     }
 })
@@ -265,9 +253,9 @@ $('.card_front').click( function(){
             'border': '2px solid #e6e6e6',
             'box-shadow': '0px 2px 10px rgb(0, 0, 0, 0%)',
         })
-        $(this).find('p').css({
-            'opacity': '50%'
-        })
+        // $(this).find('p').css({
+        //     'opacity': '50%'
+        // })
         $(this).parent().css('transform', 'rotateY(180deg)')
         let click_back_col = $(this).parent().find('.card_back').css('background-color')
         col_pair.push(click_back_col)
